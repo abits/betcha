@@ -1,0 +1,8 @@
+www/web/bundles/
+www/app/bootstrap.php.cache
+www/app/cache/*
+www/app/logs/*
+www/build/
+www/vendor
+composer.phar
+.idea
