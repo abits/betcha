@@ -1,8 +1,10 @@
-www/web/bundles/
-www/app/bootstrap.php.cache
-www/app/cache/*
-www/app/logs/*
+www/web/bundles/*
+www/web/uploads/*
+www/app/bootstrap*
+*/logs/*
+*/cache/*
 www/build/
-www/vendor
+www/vendor/*
 composer.phar
 .idea
+www/app/config/parameters.ini
