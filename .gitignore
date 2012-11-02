@@ -1,8 +1,8 @@
 www/web/bundles/*
 www/web/uploads/*
 www/app/bootstrap*
-*/logs/*
-*/cache/*
+www/app/logs/*
+www/app/cache/*
 www/build/
 www/vendor/*
 composer.phar
