@@ -7,4 +7,4 @@ www/build/
 www/vendor/*
 composer.phar
 .idea
-www/app/config/parameters.ini
+www/app/config/parameters.yml
