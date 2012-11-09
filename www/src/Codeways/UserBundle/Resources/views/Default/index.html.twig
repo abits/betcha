@@ -1,1 +1,5 @@
-Hello {{ name }}!
+{% extends "CodewaysUserBundle::layout.html.twig" %}
+
+{% block navbar %}
+    {% include "CodewaysUserBundle::navbar.html.twig" %}
+{% endblock %}

@@ -2,39 +2,25 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('bundles/codewaysuser/css/bootstrap.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/codewaysuser/css/bootstrap-responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/codewaysuser/css/style.css') }}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div class="container">
-    <div class="span6 offset3 login-box">
-        <div class="row">
-            <div class="offset2">
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                    <a href="{{ path('fos_user_security_logout') }}">
-                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                    </a>
-                {% else %}
-                    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                {% endif %}
-            </div>
-            {% for key, message in app.session.getFlashes() %}
-                <div class="{{ key }}">
-                    {{ message|trans({}, 'FOSUserBundle') }}
-                </div>
-            {% endfor %}
-        </div>
-        <hr/>
-        <div class="row">
-            <div>
-                <div>
-                    {% block fos_user_content %}
-                    {% endblock fos_user_content %}
-                </div>
-            </div>
-        </div>
-    </div>
+    {% block navbar %}
+    {% endblock %}
+
+{% for key, message in app.session.getFlashes() %}
+<div class="{{ key }}">
+    {{ message|trans({}, 'FOSUserBundle') }}
+</div>
+{% endfor %}
+<div>
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+</div>
 </div>
 <script src="{{ asset('bundles/codewaysuser/js/jquery-1.8.2.js') }}"></script>
 <script src="{{ asset('bundles/codewaysuser/js/bootstrap.js') }}"></script>

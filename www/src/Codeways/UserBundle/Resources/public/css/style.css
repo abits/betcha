@@ -1,5 +1,8 @@
-.login-box {
-    background-color: #d3d3d3;
-    padding: 12px;
-    margin-top: 48px;
+.dropdown-menu .form-inline{
+    margin: 12px;
 }
+
+.dropdown-menu .form-inline input {
+    margin-bottom: 12px;
+}
+
