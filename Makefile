@@ -1,36 +1,41 @@
 # Makefile for betcha app.
-.PHONY: clean pull update build init build-all
+.PHONY: clean pull update build init build-all ant ant-default
 
 console = php www/app/console
-git = /bin/git
 wwwuser = apache
 consoleuser = chm
 
-clean: permissions
-	${console} cache:clear --env=dev --no-warmup
-	${console} cache:clear --env=prod --no-warmup
-	su -c "rm -rf www/app/cache/* www/app/logs/*"
+clean:
+	rm -rf www/app/cache/*
+	rm -rf www/app/logs/*
 
-pull:
-	${git} pull
+ant:
+	php bin/make2ant.php
 
-update: permissions
+ant-default: update
+
+update-db:
 	${console} doctrine:schema:update --force
 	${console} assets:install www/web
 
-build: permissions
+build-db:
 	${console} doctrine:database:drop --force
 	${console} doctrine:database:create
-	${console} doctrine:schema:update --force
+	${console} doctrine:schema:create
 	${console} fos:user:create admin betcha@localhost password
+
+assets:
 	${console} assets:install www/web
 
-init: permissions
+init:
 	cp www/app/config/parameters.yml.dist www/app/config/parameters.yml
 
 permissions:
-	su -c "chown -R ${consoleuser}:${wwwuser} www; chmod -R 0775 www/app/cache; chmod -R 0775 www/app/logs"
+	sudo chown -R ${consoleuser}:${wwwuser} www
+	chmod -R 0775 www/app/cache
+	chmod -R 0775 www/app/logs
 
-build-all: pull init build clean
+build: clean init build-db  permissions
 
-update-all: pull update clean
+update: clean update-db permissions
+
