@@ -145,12 +145,14 @@ function printUsage()
 }
 
 
+// start processing
 $options = parseOptions(); 
 
 $infile = isset($options['infile']) ? $options['infile'] : 'Makefile';
 $outfile = isset($options['outfile']) ? $options['outfile'] : 'build.xml';
-$values = parse_Mkefile($infile);
+$values = parseMakefile($infile);
 $ant = generateAnt($values, $options);
+
 if (isset($options['stdout']))
 {
   writeBuildfile($ant);
