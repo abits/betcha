@@ -1,9 +1,9 @@
 # Makefile for betcha app.
 .PHONY: clean pull update build init build-all ant ant-default
 
-console = php www/app/console
-wwwuser = apache
-consoleuser = chm
+console = @php@ www/app/console
+wwwuser = @wwwuser@
+consoleuser = @consoleuser@
 
 clean:
 	rm -rf www/app/cache/*
