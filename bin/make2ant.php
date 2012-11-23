@@ -34,13 +34,13 @@ class Parser
                     && preg_match('~=~', $line))
                 {
                     $defs = explode('=', $line);
-                    $variables[$defs[0]] = $defs[1];
+                    $variables[trim($defs[0])] = trim($defs[1]);
                 }
                 if ((preg_match('~^[a-zA-Z0-9]~', $line)
                     && preg_match('~:~', $line)))
                 {
                     list($target, $deps) = explode(':', $line);
-                    $targets[] = array('target' => $target, 'deps' => $deps);
+                    $targets[] = array('target' => trim($target), 'deps' => trim($deps));
                 }
             }
             fclose($fh);
