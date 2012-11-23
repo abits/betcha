@@ -12,7 +12,7 @@ clean:
 ant:
 	php bin/make2ant.php
 
-ant-default: update
+ant-default: ant update
 
 update-db:
 	${console} doctrine:schema:update --force
