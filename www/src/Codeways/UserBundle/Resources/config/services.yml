@@ -1,7 +1,0 @@
-parameters:
-#    codeways_user.example.class: Codeways\UserBundle\Example
-
-services:
-#    codeways_user.example:
-#        class: %codeways_user.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
